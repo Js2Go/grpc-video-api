@@ -3,14 +3,12 @@ package service
 import (
 	"video/backend/dao"
 
-	"github.com/gin-gonic/gin"
 	"google.golang.org/grpc"
 )
 
 type Service struct {
-	dao    *dao.Dao
-	Router *gin.Engine
-	RPC    *grpc.Server
+	dao *dao.Dao
+	RPC *grpc.Server
 }
 
 func NewGRPCServer() *grpc.Server {
@@ -20,9 +18,8 @@ func NewGRPCServer() *grpc.Server {
 
 func NewService() *Service {
 	s := &Service{
-		dao:    dao.NewDao(),
-		Router: gin.Default(),
-		RPC:    NewGRPCServer(),
+		dao: dao.NewDao(),
+		RPC: NewGRPCServer(),
 	}
 	return s
 }
